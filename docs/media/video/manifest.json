@@ -1,0 +1,22 @@
+{
+  "source": {
+    "path": "videos/raw_cardputer-control-sesame.MOV",
+    "bytes": 128790600,
+    "sha256": "e28078f1857b70d046b5faee6aeb10974fd5d31e997df4d4b71ea697f59f128f"
+  },
+  "web": {
+    "path": "docs/media/video/cardputer-control-sesame.mp4",
+    "bytes": 8468232,
+    "sha256": "4d6953ecc9a6d0402905453eb357526417fd5c0e960c463bbd9150d417ca742a",
+    "duration_seconds": 70.533333,
+    "video": "H.264 High, 720x1280, 30 fps, yuv420p",
+    "audio": "AAC-LC, stereo, 48 kHz, 80 kb/s",
+    "fast_start": true
+  },
+  "poster": {
+    "path": "docs/media/video/cardputer-control-sesame-poster.jpg",
+    "bytes": 69793,
+    "sha256": "f4c7aadd489bf16327ec878af8c3b25f3f7911a5ea37377cc1b4d9246a18119b",
+    "frame_seconds": 24
+  }
+}

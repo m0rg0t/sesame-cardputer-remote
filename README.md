@@ -18,6 +18,17 @@ These are deterministic 240×135 captures from the shipping `src/main.cpp`
 drawing code through M5GFX's desktop backend—not browser recreations. See the
 [capture notes](docs/media/screens/README.md).
 
+## Hardware test
+
+<a href="docs/media/video/cardputer-control-sesame.mp4">
+  <img src="docs/media/video/cardputer-control-sesame-poster.jpg" width="360" alt="Cardputer ADV controlling the physical Sesame robot">
+</a>
+
+[Watch the 70-second Cardputer + Sesame hardware test](docs/media/video/cardputer-control-sesame.mp4)
+— real Wi-Fi control, pose selection, and movement on the physical robot. The
+recording predates the compact `ROBOT ON` status-label adjustment shown in the
+current firmware screenshots.
+
 ## Project site
 
 The static project site lives in [`docs/`](docs/) and is ready for GitHub

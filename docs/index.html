@@ -43,6 +43,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#screens">Screens</a>
+        <a href="#field-test">Video</a>
         <a href="#commands">Controls</a>
         <a href="#install">Install</a>
         <a
@@ -159,6 +160,48 @@
         <p class="capture-note">
           Renderer captures · M5GFX SDL backend · Native size 240×135 · Integer-scaled for clarity
         </p>
+      </section>
+
+      <section class="section field-test" id="field-test">
+        <div class="field-test-grid">
+          <figure class="video-shell">
+            <div class="video-label">
+              <span><i></i> HARDWARE TEST</span>
+              <span>01:10 / CARDPUTER ADV</span>
+            </div>
+            <div class="video-stage">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                poster="./media/video/cardputer-control-sesame-poster.jpg"
+                aria-label="Cardputer ADV controlling the physical Sesame robot"
+              >
+                <source src="./media/video/cardputer-control-sesame.mp4" type="video/mp4">
+                <a href="./media/video/cardputer-control-sesame.mp4">Open the hardware test video</a>
+              </video>
+            </div>
+          </figure>
+
+          <div class="field-test-copy">
+            <p class="eyebrow"><span></span>REAL ROBOT / REAL NETWORK</p>
+            <h2>Proof, not a render.</h2>
+            <p>
+              A continuous hands-on test of the Cardputer ADV selecting poses
+              and steering the physical Sesame robot over Wi-Fi.
+            </p>
+            <ul class="field-facts">
+              <li><span>01</span>Physical Cardputer ADV</li>
+              <li><span>02</span>Physical Sesame robot</li>
+              <li><span>03</span>Live movement commands</li>
+            </ul>
+            <a class="text-link" href="./media/video/cardputer-control-sesame.mp4">Open optimized MP4 <span aria-hidden="true">↗</span></a>
+            <p class="video-note">
+              720×1280 · H.264 + AAC · 8.1 MB. Recorded before the compact
+              <code>ROBOT ON</code> label fix visible in the current screenshots.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section class="section connection" id="connect">

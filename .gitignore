@@ -4,6 +4,7 @@ dist/
 .DS_Store
 *.log
 backups/
+videos/raw_*
 .sites-runtime/
 __pycache__/
 *.pyc
