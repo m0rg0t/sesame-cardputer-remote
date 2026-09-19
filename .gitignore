@@ -1,0 +1,8 @@
+.pio/
+dist/
+.DS_Store
+*.log
+backups/
+.sites-runtime/
+__pycache__/
+*.pyc
