@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0",
+  "source": "src/main.cpp compiled by the M5GFX SDL native harness",
+  "source_sha256": "46f4b8ab7fbbbd42157cea6e9dae7dc406b996367ba97a6b8346add491c7ee89",
+  "native_size": [
+    240,
+    135
+  ],
+  "scale": 3,
+  "screens": [
+    {
+      "id": "home-online",
+      "label": "Pose picker with the robot online",
+      "native": "home-online.png",
+      "native_sha256": "285442905bbf97b347511450a6d43032c2dc88aeda8b45e4dd9f239ce18780b6",
+      "large": "home-online@3x.png",
+      "large_sha256": "f770dfd426cf239ce387ccb050b50993eff83c961135eaa5a94b53b8c68626e2"
+    },
+    {
+      "id": "move-forward",
+      "label": "Forward movement held; release sends stop",
+      "native": "move-forward.png",
+      "native_sha256": "4c275fb305d0361b3e87bb4daa420c0f26b84d941382807672ed7474a92304c0",
+      "large": "move-forward@3x.png",
+      "large_sha256": "6daad51a6da838353d33882b54c67cac8da6135946a8f059e74336f7cb61d16f"
+    },
+    {
+      "id": "launch-wave",
+      "label": "Wave choreography launch animation",
+      "native": "launch-wave.png",
+      "native_sha256": "bef8dfba7ccbdca34baffd9f45c3bcc66d99fe3580c0b072796135b90cb5da62",
+      "large": "launch-wave@3x.png",
+      "large_sha256": "2d6ca2169c26b9a9c2f8fca7e61d55be1f3f51a6dc40a1d076bdde475d1ed563"
+    },
+    {
+      "id": "wifi-list",
+      "label": "Nearby 2.4 GHz network picker",
+      "native": "wifi-list.png",
+      "native_sha256": "028a9e35b09a3d567e60e2e879fa6d058596a511b4ee22f61733fc0caaa9c37e",
+      "large": "wifi-list@3x.png",
+      "large_sha256": "99acb5eb53a2d527529a2c88f1df721a8afbf2703dbd962faf74de5adcf2e22d"
+    },
+    {
+      "id": "mdns-discovery",
+      "label": "mDNS robot discovery",
+      "native": "mdns-discovery.png",
+      "native_sha256": "394262a48b2e10c1c9c026702168840bb907ff06984403b4330c651e9f0b1f76",
+      "large": "mdns-discovery@3x.png",
+      "large_sha256": "96dfa2213afffe79d57f695286d6f0122183681e9598974abbe1c0601f14e64d"
+    }
+  ]
+}

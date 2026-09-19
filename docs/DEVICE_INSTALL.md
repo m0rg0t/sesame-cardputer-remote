@@ -2,7 +2,7 @@
 
 Date: 2026-09-19
 
-The current SesameRemote build was installed on the connected M5Stack
+The initial SesameRemote v0.1.0 build was installed on the connected M5Stack
 Cardputer ADV with MAC `70:af:09:df:a9:b8`.
 
 ## Verified target
@@ -44,7 +44,7 @@ deliberately Git-ignored):
 The older complete BrokenSignal-slot backup is retained separately for
 historical recovery.
 
-## Installed image
+## Previously installed image
 
 - Descriptor name: `SesameRemote`
 - Version: `0.1.0`
@@ -60,3 +60,7 @@ that notice, then select `SesameRemote` and press Enter to launch it. The byte
 verification and launcher recognition do not certify live Wi-Fi/robot
 movement; perform the supported-off-floor check in the installation guide on
 first launch.
+
+This record intentionally preserves the exact hash that was verified on the
+device. Later repository builds must be flashed and verified separately before
+their hashes are added here.

@@ -4,6 +4,20 @@ A Wi-Fi controller for the **M5Stack Cardputer ADV** that discovers and
 controls a Sesame quadruped robot. It is packaged as an application-only
 ESP32-S3 image for installation through M5Apps.
 
+This controller targets the [original Sesame robot project](https://github.com/dorianborian/sesame-robot).
+
+## Firmware screens
+
+| Pose control | Choreography launch |
+| --- | --- |
+| <img src="docs/media/screens/home-online@3x.png" width="360" alt="Sesame Remote pose picker with the robot online"> | <img src="docs/media/screens/launch-wave@3x.png" width="360" alt="Wave choreography launch animation"> |
+| **Hold to move** | **Wi-Fi selection** |
+| <img src="docs/media/screens/move-forward@3x.png" width="360" alt="Forward movement held until key release"> | <img src="docs/media/screens/wifi-list@3x.png" width="360" alt="Nearby Wi-Fi network picker"> |
+
+These are deterministic 240×135 captures from the shipping `src/main.cpp`
+drawing code through M5GFX's desktop backend—not browser recreations. See the
+[capture notes](docs/media/screens/README.md).
+
 ## Project site
 
 The static project site lives in [`docs/`](docs/) and is ready for GitHub
@@ -52,6 +66,12 @@ pio run -e cardputer-adv-sesame
 python3 tools/build_release.py
 ```
 
+To regenerate the checked-in firmware screenshots (SDL2 required), run:
+
+```sh
+python3 sim/render_docs.py
+```
+
 The pinned stack matches the local Cardputer ADV references: PlatformIO
 `espressif32@7.0.1`, M5Unified `0.2.17`, M5GFX `0.2.22`, and M5Cardputer
 `1.1.1`.
@@ -60,7 +80,7 @@ The release command creates an allowlisted package under `dist/`. The BIN is
 an application image, not a whole-device image. Use **M5Apps → Installer →
 SD**; never flash it at address `0x000000`. See [installation](docs/INSTALL.md).
 
-The current build is also installed and byte-verified in a dedicated
+The initial v0.1.0 build was installed and byte-verified in a dedicated
 `SesameRemote` slot on the connected development Cardputer. The slot was
 created in the free flash left after BrokenSignal was deleted; existing apps
 were preserved. Exact offsets, checksums, and recovery details are in

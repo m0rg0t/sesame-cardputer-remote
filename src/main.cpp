@@ -254,7 +254,7 @@ void drawHome()
     canvas.setTextFont(1);
     canvas.setTextColor(robotOnline ? kLime : kOrange, kPanel);
     canvas.setCursor(9, 83);
-    canvas.print(robotOnline ? "ROBOT ONLINE" : "ROBOT OFFLINE");
+    canvas.print(robotOnline ? "ROBOT ON" : "ROBOT OFF");
     canvas.setTextColor(kMuted, kPanel);
     canvas.setCursor(9, 94);
     canvas.print(shortened(discoverySource.length() ? discoverySource : "NO ROUTE", 10));
