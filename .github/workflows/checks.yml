@@ -1,0 +1,62 @@
+name: Build and test
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+env:
+  PLATFORMIO_SETTING_ENABLE_TELEMETRY: 'no'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Release fixtures and existing media checks
+        run: python -m unittest discover -s tests -v
+  firmware:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install platformio==6.2.0
+      - name: Compile application and enforce the existing M5Apps size profile
+        run: pio run -e cardputer-adv-sesame
+      - name: Validate the built image without packaging or flashing it
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from tools.build_release import validate_image, build_identity, read_version, EXPECTED_PROJECT_NAME
+          version = read_version()
+          data = Path('.pio/build/cardputer-adv-sesame/firmware.bin').read_bytes()
+          metadata = validate_image(data, build_identity(version))
+          assert metadata == {'app_version': version, 'project_name': EXPECTED_PROJECT_NAME}
+          PY
+  renderer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install platformio==6.2.0
+      - name: Install native display build dependencies
+        run: sudo apt-get update && sudo apt-get install -y libsdl2-dev
+      - name: Build the actual-source renderer with stubbed hardware and networking
+        run: pio run -e native-sim
+      - name: Render deterministic scenarios and compare with checked-in captures
+        run: python tools/check_renderer.py

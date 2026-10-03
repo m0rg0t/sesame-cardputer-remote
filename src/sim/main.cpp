@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SDL.h>
 
 #include <cstdio>
 #include <cstdlib>
@@ -116,9 +117,15 @@ int run(bool*)
     if (!canvas.createSprite(kScreenWidth, kScreenHeight)) return 1;
     fs::create_directories(shotsDirectory);
     captureScenarios();
-    // Panel_sdl owns the host event loop. Screenshot generation is a batch
-    // command, so end it as soon as every frame has been flushed to disk.
-    std::exit(0);
+    // Ask the owning SDL loop to close and join this worker before static
+    // display objects are destroyed. exit() here races that loop during cleanup.
+    SDL_Event quit{};
+    quit.type = SDL_QUIT;
+    if (SDL_PushEvent(&quit) != 1) {
+        std::fprintf(stderr, "Unable to stop SDL: %s\n", SDL_GetError());
+        std::_Exit(1);
+    }
+    return 0;
 }
 
 }  // namespace

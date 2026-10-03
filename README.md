@@ -70,7 +70,7 @@ Point, Swim, Pushup, Crab, Worm, Freaky and Dead.
 
 ## Build
 
-Install PlatformIO, then run:
+Install PlatformIO 6.2.0 (`python -m pip install platformio==6.2.0`), then run:
 
 ```sh
 pio run -e cardputer-adv-sesame
@@ -83,9 +83,9 @@ To regenerate the checked-in firmware screenshots (SDL2 required), run:
 python3 sim/render_docs.py
 ```
 
-The pinned stack matches the local Cardputer ADV references: PlatformIO
-`espressif32@7.0.1`, M5Unified `0.2.17`, M5GFX `0.2.22`, and M5Cardputer
-`1.1.1`.
+The pinned stack is PlatformIO `espressif32@7.1.3`, M5Unified `0.2.25`,
+M5GFX `0.2.32`, M5Cardputer `1.2.0`, and its IRremote dependency `4.7.1`.
+The native renderer pins `native@1.2.1`.
 
 The release command creates an allowlisted package under `dist/`. The BIN is
 an application image, not a whole-device image. Use **M5Apps → Installer →
@@ -96,6 +96,28 @@ The initial v0.1.0 build was installed and byte-verified in a dedicated
 created in the free flash left after BrokenSignal was deleted; existing apps
 were preserved. Exact offsets, checksums, and recovery details are in
 [the device installation record](docs/DEVICE_INSTALL.md).
+
+## Automated verification
+
+Run `python -m unittest discover -s tests -v`. The Python-standard-library
+suite retains the screenshot/video integrity checks and exercises the real
+release validator and packager using temporary synthetic ESP32-S3 images.
+Cases cover malformed headers and segments, descriptors/identity, checksum and
+SHA-256 failures, trailing content, stale builds, canonical artifact selection,
+unsafe versions, archive allowlists and output hashes.
+
+The read-only PR workflow also compiles the firmware, enforces the existing
+`0x140000` application limit, validates the resulting image, and builds the
+actual-source SDL renderer against fake hardware/network APIs. Rendered
+scenarios must exit cleanly and match the checked-in screenshot hashes across
+three fresh processes (`python tools/check_renderer.py`, after the native build).
+The renderer requests SDL shutdown and lets its owner join the worker, avoiding
+a crash caused by process exit from the capture thread. No job flashes a
+device, contacts a robot, publishes a release or deploys Pages.
+
+A compile and simulated checks do not certify physical keyboard, Wi-Fi/mDNS,
+stop-on-release, or M5Apps installation behavior. The earlier device/video
+verification remains historical and does not certify a new dependency build.
 
 ## Robot compatibility
 
